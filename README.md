@@ -11,3 +11,6 @@
 * `npm install && gulp`
 
 This will serve your template up on http://localhost:3000. Any changes to the JS or HTML will cause the browsersync to reload. All Scss changes will be injected without reload.
+
+Access the Browsersync control panel via http://localhost:3001
+
