@@ -22,8 +22,7 @@ var duration     = require('gulp-duration');
 var prod         = gutil.env.prod;
 
 var sassPaths = [
-  'node_modules/bootstrap/scss',
-  'node_modules/font-awesome/scss'
+  'node_modules/bootstrap/scss'
 ];
 
 var onError = function(err) {
@@ -70,7 +69,7 @@ gulp.task('sass', function() {
   return gulp.src('./build/assets/scss/**/*.scss')
       .pipe(prod ? sourcemaps.init() : gutil.noop())
       .pipe(sass({
-        includePaths: [].concat(require('node-bourbon').includePaths, ['node_modules/bootstrap/scss', 'node_modules/font-awesome/scss'])
+        includePaths: [].concat(require('node-bourbon').includePaths, ['node_modules/bootstrap/scss', fontawesome.scssPath ])
       }))
       .on('error', onError)
       .pipe(prod ? uncss({
@@ -107,4 +106,4 @@ gulp.task('serve', function() {
 });
 
 // use gulp-sequence to finish building html, sass and js before first page load
-gulp.task('default', gulpSequence(['html', 'sass', 'js'], 'serve'));
+gulp.task('default', gulpSequence(['fonts', 'html', 'sass', 'js'], 'serve'));
